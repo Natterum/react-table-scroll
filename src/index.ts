@@ -1,4 +1,4 @@
 import '../styles.min.css';
-import TableScroll from './components/TableScroll'
+import ReactTableScroll from './components/ReactTableScroll'
 
-export { TableScroll }
+export { ReactTableScroll }

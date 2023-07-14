@@ -7,7 +7,7 @@ interface IProps {
     children: any
 }
 
-const TableScroll = ({children}: IProps) => {
+const ReactTableScroll = ({children}: IProps) => {
     const [horizontalScrollStyle, setHorizontalScrollStyle] = useState<object>({});
     const horizontalScrollRef = useRef<HTMLDivElement | any>(null);
     const targetRef = useRef<HTMLDivElement | any>(null);
@@ -47,4 +47,4 @@ const TableScroll = ({children}: IProps) => {
     )
 }
 
-export default TableScroll
+export default ReactTableScroll

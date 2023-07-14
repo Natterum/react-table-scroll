@@ -1,14 +1,14 @@
 'use client'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { TableScroll } from 'react-table-scroll';
+import { ReactTableScroll } from 'react-table-scroll';
 import { Container } from 'react-bootstrap';
 
 export default function Home() {
 
     return (
     <Container className="p-5">
-        <TableScroll>
+        <ReactTableScroll>
             <table width="100%" className="table table-bordered table-hover table-striped">
                 <thead>
                 <tr>
@@ -33,7 +33,7 @@ export default function Home() {
                 ))}
                 </tbody>
             </table>
-        </TableScroll>
+        </ReactTableScroll>
     </Container>
   )
 }
