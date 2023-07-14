@@ -1,0 +1,51 @@
+{
+  "name": "react-table-scroll",
+  "version": "0.1.0",
+  "author": "Ontuzhev Viacheslav (Natterum)",
+  "license": "MIT",
+  "private": true,
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natterum/react-table-scroll.git"
+  },
+  "keywords": [
+    "react",
+    "table",
+    "scroll"
+  ],
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "dependencies": {
+    "@types/node": "20.4.2",
+    "@types/react": "18.2.15",
+    "@types/react-dom": "18.2.7",
+    "eslint": "8.44.0",
+    "eslint-config-next": "13.4.9",
+    "next": "13.4.9",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "^1.63.6",
+    "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  }
+}
