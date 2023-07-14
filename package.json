@@ -1,6 +1,6 @@
 {
   "name": "react-table-scroll",
-  "version": "0.0.3a",
+  "version": "0.0.6a",
   "author": "Ontuzhev Viacheslav (Natterum)",
   "license": "MIT",
   "main": "./dist/cjs/index.js",
@@ -24,7 +24,7 @@
     "build": "yarn style && yarn build:esm && yarn build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "style": "sass src/styles.scss dist/styles.css && postcss dist/styles.css > dist/styles.min.css"
+    "style": "sass src/styles.scss dist/assets/index.css && postcss dist/assets/index.css > dist/assets/index.min.css"
   },
   "peerDependencies": {
     "react": ">=16"
