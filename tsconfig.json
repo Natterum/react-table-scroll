@@ -4,6 +4,7 @@
     "dist",
     "node_modules"
   ],
+  "baseUrl": ".",
   "compilerOptions": {
     "module": "esnext",
     "lib": ["dom", "esnext"],

@@ -21,10 +21,10 @@
     "README.md"
   ],
   "scripts": {
-    "build": "yarn build:esm && yarn build:cjs",
+    "build": "yarn style && yarn build:esm && yarn build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "prepare": "npm run build"
+    "style": "sass src/styles.scss dist/styles.css && postcss dist/styles.css > dist/styles.min.css"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -38,6 +38,7 @@
     "next": "13.4.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-resize-detector": "^9.1.0",
     "react-table-scroll": "^0.1.0",
     "sass": "^1.63.6",
     "typescript": "5.1.6"
@@ -45,8 +46,11 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "cssnano": "^6.0.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.4.26",
+    "postcss-cli": "^10.1.0",
     "prettier": "^3.0.0"
   }
 }

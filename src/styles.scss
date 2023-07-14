@@ -1,0 +1,33 @@
+.rts {
+  &__wrapper {
+
+  }
+
+  &-table {
+    &__wrapper {
+      overflow-x: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    &__container {
+      width: fit-content;
+      position: relative;
+    }
+
+    &-scroll {
+      &__wrapper {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width: 100%;
+        position: sticky;
+        bottom: 0;
+      }
+
+      &__content {
+        height: 1px;
+        width: 110vw;
+      }
+    }
+  }
+}
