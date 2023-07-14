@@ -1,11 +1,34 @@
 module.exports = {
-    plugins: ['@typescript-eslint'],
-    extends: 'next/core-web-vitals',
-    rules: {
-        'react/no-unescaped-entities': 'off',
-        '@next/next/no-img-element': 'off',
-        'react/display-name': 'off',
-        'prefer-const': 'error',
-        '@typescript-eslint/no-unused-vars': 'error'
+    "root": true,
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint",
+        "react",
+        "react-hooks"
+    ],
+    "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "globals": {
+        "JSX": true
     }
 };

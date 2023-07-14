@@ -1,9 +1,8 @@
 {
   "name": "react-table-scroll",
-  "version": "0.1.0",
+  "version": "0.0.1a",
   "author": "Ontuzhev Viacheslav (Natterum)",
   "license": "MIT",
-  "private": true,
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
@@ -22,12 +21,9 @@
     "README.md"
   ],
   "scripts": {
-    "dev": "next dev",
     "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "start": "next start",
-    "lint": "next lint",
     "prepare": "npm run build"
   },
   "peerDependencies": {
@@ -37,15 +33,20 @@
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
-    "eslint": "8.44.0",
+    "eslint": "^8.44.0",
     "eslint-config-next": "13.4.9",
     "next": "13.4.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-table-scroll": "^0.1.0",
     "sass": "^1.63.6",
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^3.0.0"
   }
 }
