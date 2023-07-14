@@ -1,3 +1,3 @@
-import ReactTableScroll from './components/ReactTableScroll'
+import ReactTableScroll from './components/ReactTableScroll';
 
-export { ReactTableScroll }
+export { ReactTableScroll    };

@@ -21,4 +21,4 @@ import { ReactTableScroll } from 'react-table-scroll';
 
 ## :loudspeaker: Important
 
-**Do not use** **overflow: hidden** in parent div for correct work. 
+**Do not use** **overflow: hidden** in parent div for correct work.
