@@ -12,11 +12,11 @@ const ReactTableScroll = ({ children }: IProps) => {
     const horizontalScrollRef = useRef<HTMLDivElement | any>(null);
     const targetRef = useRef<HTMLDivElement | any>(null);
     const { width, height } = useResizeDetector({ targetRef });
+    const tableContainerRef = useRef<HTMLDivElement | any>(null);
     const tableWrapperRef = useRef<HTMLDivElement | any>(null);
-    const [tableLeftPos, setTableLeftPos] = useState<number>(0);
 
     const diffSizes = (): boolean => {
-        return tableWrapperRef.current?.clientWidth > targetRef.current?.clientWidth;
+        return tableContainerRef.current?.clientWidth > targetRef.current?.clientWidth;
     };
 
     const handleResize = () => {
@@ -24,7 +24,7 @@ const ReactTableScroll = ({ children }: IProps) => {
             setHorizontalScrollStyle({ width: value });
         };
         if (diffSizes()) {
-            setValue(tableWrapperRef.current?.clientWidth);
+            setValue(tableContainerRef.current?.clientWidth);
         } else {
             setValue(0);
         }
@@ -32,7 +32,8 @@ const ReactTableScroll = ({ children }: IProps) => {
 
     const onTableHorizontalScroll = () => {
         const posX: number = horizontalScrollRef.current?.scrollLeft ?? 0;
-        setTableLeftPos(posX);
+        const posY: number = horizontalScrollRef.current?.scrollTop ?? 0;
+        tableWrapperRef.current.scrollTo(posX, posY);
     };
 
     useEffect(() => {
@@ -41,8 +42,8 @@ const ReactTableScroll = ({ children }: IProps) => {
 
     return (
         <div className="rts__wrapper" ref={targetRef}>
-            <div className="rts-table__wrapper">
-                <div className="rts-table__container" ref={tableWrapperRef} style={{ left: -tableLeftPos }}>
+            <div className="rts-table__wrapper" ref={tableWrapperRef}>
+                <div className="rts-table__container" ref={tableContainerRef}>
                     {children}
                 </div>
             </div>

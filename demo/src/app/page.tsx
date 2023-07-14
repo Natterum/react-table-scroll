@@ -18,13 +18,25 @@ export default function Home() {
                             <td>ID</td>
                             <td width="25%">Name</td>
                             <td width="25%">Surname</td>
+                            <td>ID</td>
+                            <td width="25%">Name</td>
+                            <td width="25%"> Surname</td>
+                            <td>ID</td>
+                            <td width="25%">Name</td>
+                            <td width="25%">Surname</td>
                         </tr>
                     </thead>
                     <tbody>
-                        {Array(100)
+                        {Array(300)
                             .fill(null)
                             .map((item, index) => (
                                 <tr key={index}>
+                                    <td>10000000000</td>
+                                    <td>10000000000</td>
+                                    <td>10000000000</td>
+                                    <td>10000000000</td>
+                                    <td>10000000000</td>
+                                    <td>10000000000</td>
                                     <td>10000000000</td>
                                     <td>10000000000</td>
                                     <td>10000000000</td>
