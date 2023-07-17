@@ -1,4 +1,6 @@
-# Component for displaying a floating scroll from below for a table in React
+# React table scroll
+
+Component for displaying a floating scroll from below for a table in React
 
 ## :hammer: How to install
 
