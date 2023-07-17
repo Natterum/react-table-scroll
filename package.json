@@ -1,6 +1,6 @@
 {
     "name": "react-table-scroll",
-    "version": "0.0.10b",
+    "version": "0.0.11b",
     "author": "Ontuzhev Viacheslav (Natterum)",
     "license": "MIT",
     "main": "./dist/cjs/index.js",
