@@ -13,7 +13,6 @@ yarn add react-table-scroll
 ## :low_brightness: How to use
 
 ```bash
-import 'react-table-scroll/dist/assets/index.min.css';
 import { ReactTableScroll } from 'react-table-scroll';
 
 <ReactTableScroll>
