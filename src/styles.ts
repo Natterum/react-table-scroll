@@ -1,7 +1,6 @@
 import { CSSProperties } from 'react';
 
 export const rtsTableWrapper: CSSProperties = {
-    overflowX: 'hidden',
     position: 'relative',
     width: '100%'
 };

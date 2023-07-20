@@ -10,11 +10,19 @@ interface IProps {
 
 const ReactTableScroll = ({ children }: IProps) => {
     const [horizontalScrollStyle, setHorizontalScrollStyle] = useState<object>({});
+    const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
+
     const horizontalScrollRef = useRef<HTMLDivElement | null>(null);
     const targetRef = useRef<HTMLDivElement | null>(null);
     const tableContainerRef = useRef<HTMLDivElement | null>(null);
     const tableWrapperRef = useRef<HTMLDivElement | any>(null);
+
     const { width, height } = useResizeDetector({ targetRef: tableContainerRef });
+
+    const MobileDeviceDetector = () => {
+        const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+        setIsMobileDevice(isMobile);
+    };
 
     const diffSizes = (): boolean => {
         if (tableContainerRef?.current && targetRef?.current) {
@@ -44,21 +52,28 @@ const ReactTableScroll = ({ children }: IProps) => {
 
     useEffect(() => {
         handleResize();
+        MobileDeviceDetector();
     }, [width, height]);
 
+    useEffect(() => {
+        MobileDeviceDetector();
+    }, []);
+
     return (
-        <div ref={targetRef}>
-            <div style={rtsTableWrapper} ref={tableWrapperRef}>
-                <div style={rtsTableContainer} ref={tableContainerRef}>
-                    {children}
+        <>
+            <div ref={targetRef}>
+                <div style={{ ...rtsTableWrapper, overflowX: isMobileDevice ? 'scroll' : 'hidden' }} ref={tableWrapperRef}>
+                    <div style={rtsTableContainer} ref={tableContainerRef}>
+                        {children}
+                    </div>
                 </div>
+                {diffSizes() && !isMobileDevice && (
+                    <div style={rtsTableScrollWrapper} ref={horizontalScrollRef} onScroll={onTableHorizontalScroll}>
+                        <div style={{ ...rtsTableScrollContent, ...horizontalScrollStyle }}></div>
+                    </div>
+                )}
             </div>
-            {diffSizes() && (
-                <div style={rtsTableScrollWrapper} ref={horizontalScrollRef} onScroll={onTableHorizontalScroll}>
-                    <div style={{ ...rtsTableScrollContent, ...horizontalScrollStyle }}></div>
-                </div>
-            )}
-        </div>
+        </>
     );
 };
 
