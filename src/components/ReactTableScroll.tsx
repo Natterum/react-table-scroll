@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useResizeDetector } from 'react-resize-detector';
-import { rtsTableContainer, rtsTableScrollContent, rtsTableScrollWrapper, rtsTableWrapper } from '../styles';
+import { rtsTableContainer, rtsScrollContent, rtsScrollWrapper, rtsTableWrapper } from '../styles';
 
 interface IProps {
     children: any;
@@ -12,7 +12,7 @@ const ReactTableScroll = ({ children }: IProps) => {
     const [horizontalScrollStyle, setHorizontalScrollStyle] = useState<object>({});
     const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
 
-    const horizontalScrollRef = useRef<HTMLDivElement | null>(null);
+    const horizontalScrollRef = useRef<HTMLDivElement | any>(null);
     const targetRef = useRef<HTMLDivElement | null>(null);
     const tableContainerRef = useRef<HTMLDivElement | null>(null);
     const tableWrapperRef = useRef<HTMLDivElement | any>(null);
@@ -42,11 +42,19 @@ const ReactTableScroll = ({ children }: IProps) => {
         }
     };
 
-    const onTableHorizontalScroll = () => {
+    const onHorizontalScroll = () => {
         const posX: number = horizontalScrollRef.current?.scrollLeft ?? 0;
         const posY: number = horizontalScrollRef.current?.scrollTop ?? 0;
         if (tableWrapperRef?.current) {
             tableWrapperRef.current.scrollTo(posX, posY);
+        }
+    };
+
+    const onTableHorizontalScroll = () => {
+        const posX: number = tableWrapperRef.current?.scrollLeft ?? 0;
+        const posY: number = tableWrapperRef.current?.scrollTop ?? 0;
+        if (horizontalScrollRef?.current) {
+            horizontalScrollRef.current.scrollTo(posX, posY);
         }
     };
 
@@ -62,14 +70,24 @@ const ReactTableScroll = ({ children }: IProps) => {
     return (
         <>
             <div ref={targetRef}>
-                <div style={{ ...rtsTableWrapper, overflowX: isMobileDevice ? 'scroll' : 'hidden' }} ref={tableWrapperRef}>
+                <div
+                    style={{ ...rtsTableWrapper, overflowX: isMobileDevice ? 'scroll' : 'hidden' }}
+                    ref={tableWrapperRef}
+                    onTouchStart={() => setIsMobileDevice(true)}
+                    onTouchEnd={() => {
+                        setIsMobileDevice(false);
+                        onTableHorizontalScroll();
+                    }}>
                     <div style={rtsTableContainer} ref={tableContainerRef}>
                         {children}
                     </div>
                 </div>
-                {diffSizes() && !isMobileDevice && (
-                    <div style={rtsTableScrollWrapper} ref={horizontalScrollRef} onScroll={onTableHorizontalScroll}>
-                        <div style={{ ...rtsTableScrollContent, ...horizontalScrollStyle }}></div>
+                {diffSizes() && (
+                    <div
+                        style={{ ...rtsScrollWrapper, height: isMobileDevice ? '0px' : 'auto' }}
+                        ref={horizontalScrollRef}
+                        onScroll={onHorizontalScroll}>
+                        <div style={{ ...rtsScrollContent, ...horizontalScrollStyle }}></div>
                     </div>
                 )}
             </div>

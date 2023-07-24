@@ -10,7 +10,7 @@ export const rtsTableContainer: CSSProperties = {
     position: 'relative'
 };
 
-export const rtsTableScrollWrapper: CSSProperties = {
+export const rtsScrollWrapper: CSSProperties = {
     overflowX: 'scroll',
     overflowY: 'hidden',
     width: '100%',
@@ -18,7 +18,7 @@ export const rtsTableScrollWrapper: CSSProperties = {
     bottom: 0
 };
 
-export const rtsTableScrollContent: CSSProperties = {
-    height: '1px',
+export const rtsScrollContent: CSSProperties = {
+    height: '0.1px',
     width: 0
 };
