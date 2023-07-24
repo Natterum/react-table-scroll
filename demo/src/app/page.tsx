@@ -39,6 +39,7 @@ export default function Home() {
                     </tbody>
                 </table>
             </ReactTableScroll>
+            <div className="text-center">Demo</div>
         </Container>
     );
 }
