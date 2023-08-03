@@ -15,18 +15,27 @@ export default function Page() {
                     <div className="card-body">
                         <h5 className="card-title">Basic</h5>
                         <p className="card-text">Basic example with a simple table</p>
-                        <a href="#" className="btn btn-primary" onClick={() => router.push('/basic')}>
+                        <button className="btn btn-primary" onClick={() => router.push('/basic')}>
                             Go to example
-                        </a>
+                        </button>
                     </div>
                 </div>
-                <div className="card mb-3" style={{ flex: '1 0 200px' }} onClick={() => router.push('/react-table')}>
+                <div className="card mb-3" style={{ flex: '1 0 200px' }}>
                     <div className="card-body">
                         <h5 className="card-title">TanStack Table</h5>
                         <p className="card-text">TanStack Table example with the resizing of columns</p>
-                        <a href="#" className="btn btn-primary">
+                        <button className="btn btn-primary" onClick={() => router.push('/react-table')}>
                             Go to example
-                        </a>
+                        </button>
+                    </div>
+                </div>
+                <div className="card mb-3" style={{ flex: '1 0 200px' }}>
+                    <div className="card-body">
+                        <h5 className="card-title">Basic layer</h5>
+                        <p className="card-text">Usage example with plain text in a layer</p>
+                        <button className="btn btn-primary" onClick={() => router.push('/basic-layer')}>
+                            Go to example
+                        </button>
                     </div>
                 </div>
             </div>
