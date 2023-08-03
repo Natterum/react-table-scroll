@@ -10,7 +10,7 @@ export default function Page() {
         <Container>
             <h1 className="text-center mt-4">React-table-scroll</h1>
             <h2 className="text-center mt-4 mb-5">Examples</h2>
-            <div class="d-sm-flex flex-wrap gap-4">
+            <div className="d-sm-flex flex-wrap gap-4">
                 <div className="card mb-3" style={{ flex: '1 0 200px' }}>
                     <div className="card-body">
                         <h5 className="card-title">Basic</h5>

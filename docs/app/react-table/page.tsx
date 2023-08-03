@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 
 import { useReactTable, ColumnResizeMode, getCoreRowModel, ColumnDef, flexRender } from '@tanstack/react-table';
 import { Container } from 'react-bootstrap';
@@ -79,12 +78,10 @@ const defaultColumns: ColumnDef<Person>[] = [
 ];
 
 const Page = () => {
-    const [data, setData] = React.useState(() => [...defaultData]);
+    const [data] = React.useState(() => [...defaultData]);
     const [columns] = React.useState<typeof defaultColumns>(() => [...defaultColumns]);
 
     const [columnResizeMode, setColumnResizeMode] = React.useState<ColumnResizeMode>('onChange');
-
-    const rerender = React.useReducer(() => ({}), {})[1];
 
     const table = useReactTable({
         data,
@@ -105,8 +102,8 @@ const Page = () => {
                         value={columnResizeMode}
                         onChange={(e) => setColumnResizeMode(e.target.value as ColumnResizeMode)}
                         className="p-2 mb-4 form-control w-25">
-                        <option value="onEnd">Resize: "onEnd"</option>
-                        <option value="onChange">Resize: "onChange"</option>
+                        <option value="onEnd">Resize: onEnd</option>
+                        <option value="onChange">Resize: onChange</option>
                     </select>
                     <ReactTableScroll>
                         <table
@@ -121,8 +118,8 @@ const Page = () => {
                                     <tr key={headerGroup.id}>
                                         {headerGroup.headers.map((header) => (
                                             <th
+                                                key={header.id}
                                                 {...{
-                                                    key: header.id,
                                                     colSpan: header.colSpan,
                                                     style: {
                                                         width: header.getSize()
@@ -154,8 +151,8 @@ const Page = () => {
                                     <tr key={row.id}>
                                         {row.getVisibleCells().map((cell) => (
                                             <td
+                                                key={cell.id}
                                                 {...{
-                                                    key: cell.id,
                                                     style: {
                                                         width: cell.column.getSize()
                                                     }
