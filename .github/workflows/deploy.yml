@@ -29,6 +29,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Navigate to Demo Folder
+        working-directory: ./demo
+        run: cd ./demo
       - name: Checkout
         uses: actions/checkout@v3
       - name: Detect package manager
