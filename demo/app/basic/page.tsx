@@ -8,10 +8,10 @@ const Page = () => {
     return (
         <>
             <Container className="mt-4">
-                <h1>React-table example</h1>
+                <h1>Basic table example</h1>
                 <div className="table-container">
                     <ReactTableScroll>
-                        <table width="100%" className="table table-bordered table-hover table-striped">
+                        <table width="100%" className="table table-bordered table-hover table-striped mb-0">
                             <thead>
                                 <tr>
                                     <td>ID</td>
@@ -41,8 +41,6 @@ const Page = () => {
                                     ))}
                             </tbody>
                         </table>
-
-                        <div className="text-center">Demo</div>
                     </ReactTableScroll>
                 </div>
             </Container>
