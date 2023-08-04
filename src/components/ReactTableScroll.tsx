@@ -16,6 +16,8 @@ const ReactTableScroll = ({ children }: IProps) => {
     const targetRef = useRef<HTMLDivElement | null>(null);
     const tableContainerRef = useRef<HTMLDivElement | null>(null);
     const tableWrapperRef = useRef<HTMLDivElement | any>(null);
+    const startTouchXPoint = useRef<number>(0);
+    const startScrollXPoint = useRef<number>(0);
 
     const { width, height } = useResizeDetector({ targetRef: tableContainerRef });
 
@@ -58,6 +60,33 @@ const ReactTableScroll = ({ children }: IProps) => {
         }
     };
 
+    const onTouchMove = (e: TouchEvent) => {
+        if (startTouchXPoint.current === 0) startTouchXPoint.current = e.touches[0].clientX;
+        if (startScrollXPoint.current === 0) startScrollXPoint.current = tableWrapperRef.current?.scrollLeft;
+
+        const offsetX = e.touches[0].clientX - startTouchXPoint.current;
+
+        if (horizontalScrollRef?.current) {
+            horizontalScrollRef.current.scrollTo(startScrollXPoint.current - offsetX, 0);
+        }
+    };
+
+    const onTouchEnd = () => {
+        startTouchXPoint.current = 0;
+        startScrollXPoint.current = 0;
+        removeEventListeners();
+    };
+
+    const addEventListeners = () => {
+        window.addEventListener('touchmove', onTouchMove);
+        window.addEventListener('touchend', onTouchEnd);
+    };
+
+    const removeEventListeners = () => {
+        window.removeEventListener('touchmove', onTouchMove);
+        window.removeEventListener('touchend', onTouchEnd);
+    };
+
     useEffect(() => {
         handleResize();
         MobileDeviceDetector();
@@ -73,12 +102,19 @@ const ReactTableScroll = ({ children }: IProps) => {
                 <div
                     style={{ ...rtsTableWrapper, overflowX: isMobileDevice ? 'scroll' : 'hidden' }}
                     ref={tableWrapperRef}
-                    onTouchStart={() => setIsMobileDevice(true)}
+                    onTouchStart={() => {
+                        setIsMobileDevice(true);
+                    }}
                     onTouchEnd={() => {
                         setIsMobileDevice(false);
                         onTableHorizontalScroll();
                     }}>
-                    <div style={rtsTableContainer} ref={tableContainerRef}>
+                    <div
+                        style={rtsTableContainer}
+                        ref={tableContainerRef}
+                        onTouchStart={() => {
+                            addEventListeners();
+                        }}>
                         {children}
                     </div>
                 </div>

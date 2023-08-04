@@ -96,7 +96,7 @@ const Page = () => {
     return (
         <>
             <Container className="mt-4">
-                <h1>React-table example</h1>
+                <h1>TanStack Table example</h1>
                 <div className="table-container">
                     <select
                         value={columnResizeMode}
