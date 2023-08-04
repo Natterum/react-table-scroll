@@ -21,7 +21,7 @@
         "react": "18.2.0",
         "react-bootstrap": "^2.8.0",
         "react-dom": "18.2.0",
-        "react-table-scroll": "^0.0.15-b",
+        "react-table-scroll": "^0.0.16-b",
         "typescript": "5.1.6"
     },
     "devDependencies": {
