@@ -1,14 +1,32 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import { useResizeDetector } from 'react-resize-detector';
 import { rtsTableContainer, rtsScrollContent, rtsScrollWrapper, rtsTableWrapper } from '../styles';
 
 interface IProps {
     children: any;
+    tableWrapperStyle?: CSSProperties | undefined;
+    tableContainerStyle?: CSSProperties | undefined;
+    scrollWrapperStyle?: CSSProperties | undefined;
+    scrollContentStyle?: CSSProperties | undefined;
+    tableWrapperClass?: string;
+    tableContainerClass?: string;
+    scrollWrapperClass?: string;
+    scrollContentClass?: string;
 }
 
-const ReactTableScroll = ({ children }: IProps) => {
+const ReactTableScroll = ({
+    children,
+    scrollContentStyle,
+    scrollWrapperStyle,
+    tableWrapperStyle,
+    tableContainerStyle,
+    scrollContentClass,
+    tableContainerClass,
+    tableWrapperClass,
+    scrollWrapperClass
+}: IProps) => {
     const [horizontalScrollStyle, setHorizontalScrollStyle] = useState<object>({});
     const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
 
@@ -100,7 +118,8 @@ const ReactTableScroll = ({ children }: IProps) => {
         <>
             <div ref={targetRef}>
                 <div
-                    style={{ ...rtsTableWrapper, overflowX: isMobileDevice ? 'scroll' : 'hidden' }}
+                    className={tableWrapperClass}
+                    style={{ ...rtsTableWrapper, overflowX: isMobileDevice ? 'scroll' : 'hidden', ...tableWrapperStyle }}
                     ref={tableWrapperRef}
                     onTouchStart={() => {
                         setIsMobileDevice(true);
@@ -110,7 +129,8 @@ const ReactTableScroll = ({ children }: IProps) => {
                         onTableHorizontalScroll();
                     }}>
                     <div
-                        style={rtsTableContainer}
+                        className={tableContainerClass}
+                        style={{ ...rtsTableContainer, ...tableContainerStyle }}
                         ref={tableContainerRef}
                         onTouchStart={() => {
                             addEventListeners();
@@ -120,10 +140,13 @@ const ReactTableScroll = ({ children }: IProps) => {
                 </div>
                 {diffSizes() && (
                     <div
-                        style={{ ...rtsScrollWrapper, height: isMobileDevice ? '0px' : 'auto' }}
+                        className={scrollWrapperClass}
+                        style={{ ...rtsScrollWrapper, height: isMobileDevice ? '0px' : 'auto', ...scrollWrapperStyle }}
                         ref={horizontalScrollRef}
                         onScroll={onHorizontalScroll}>
-                        <div style={{ ...rtsScrollContent, ...horizontalScrollStyle }}></div>
+                        <div
+                            className={scrollContentClass}
+                            style={{ ...rtsScrollContent, ...scrollContentStyle, ...horizontalScrollStyle }}></div>
                     </div>
                 )}
             </div>
