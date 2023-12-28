@@ -36,3 +36,7 @@ import { ReactTableScroll } from 'react-table-scroll';
 ## :loudspeaker: Important
 
 **Do not use** **overflow: hidden** in parent layer and above for correct work.
+
+## License
+
+`react-table-scroll` is released under the MIT license.
