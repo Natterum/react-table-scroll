@@ -20,6 +20,19 @@ import { ReactTableScroll } from 'react-table-scroll';
 </ReactTableScroll>
 ```
 
+## Common API
+| Name         | Type    | Default | Description |
+| ------------ | ------- | ------- | ----------- |
+| tableWrapperStyle | CSSProperties | `{}` | The style used for the table wrapper |
+| tableContainerStyle | CSSProperties | `{}` | The style used for the table container |
+| scrollWrapperStyle | CSSProperties | `{}` | The style used for the scroll wrapper |
+| scrollContentStyle | CSSProperties | `{}` | The style used for the scroll layer |
+| tableWrapperClass | string | `''` | The class used for the table wrapper |
+| tableContainerClass | string | `''` | The class used for the table container |
+| scrollWrapperClass | string | `''` | The class used for the scroll wrapper |
+| scrollContentClass | string | `''` | The class used for the scroll layer |
+
+
 ## :loudspeaker: Important
 
 **Do not use** **overflow: hidden** in parent layer and above for correct work.
