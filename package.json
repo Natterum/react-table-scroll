@@ -1,6 +1,6 @@
 {
     "name": "react-table-scroll",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "author": "Ontuzhev Viacheslav (Natterum)",
     "license": "MIT",
     "main": "./dist/cjs/index.js",
@@ -34,9 +34,9 @@
         "@types/react-dom": "18.2.7",
         "eslint": "^8.44.0",
         "eslint-config-next": "13.4.9",
-        "react": "18.2.0",
+        "react": "^18.3.1",
         "react-dom": "18.2.0",
-        "react-resize-detector": "^9.1.0",
+        "react-resize-detector": "^11.0.1",
         "react-table-scroll": "^0.1.0",
         "sass": "^1.63.6",
         "typescript": "5.1.6"
